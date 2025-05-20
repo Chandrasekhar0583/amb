@@ -19,7 +19,7 @@ const MyMainNavigate = () => {
                         headerShown: true,
                     }}>
                     <Tab.Screen name="Home" component={HomeAMB} />
-                    <Tab.Screen name="Booking" component={BookingAMBMAIN} />
+                    <Tab.Screen options={{headerShown:false}} name="Booking" component={BookingAMBMAIN} />
                     <Tab.Screen name="Notification" component={Notification} />
                     <Tab.Screen name="RouteSetting" component={Routesetting} />
                 </Tab.Navigator>

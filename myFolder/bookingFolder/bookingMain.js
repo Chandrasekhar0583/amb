@@ -25,8 +25,8 @@ const BookingAMBMAIN = () => {
                         fontWeight: 'bold',
                     },
                 }}>
-                <Stack.Screen name="BookingAMB1" component={BookingAmb1} />
-                <Stack.Screen name="BookingAMB2" component={BookingAmb2} />
+                <Stack.Screen name="What's the emergency?" component={BookingAmb1} />
+                <Stack.Screen name="Choose Hospital" component={BookingAmb2} />
                 <Stack.Screen name="BookingAMB3" component={BookingAmb3} />
                 <Stack.Screen name="BookingAMB4" component={BookingAmb4} />
                 
