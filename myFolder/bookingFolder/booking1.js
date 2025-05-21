@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react';
-=======
   // import React from 'react';
   // import { useNavigation } from '@react-navigation/native';
   // import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
@@ -216,7 +213,6 @@ import React from 'react';
 
 
 import React, { useState } from 'react';
->>>>>>> Stashed changes
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -233,17 +229,6 @@ const emergencyData = [
 const BookingAmb1 = () => {
   const { colors } = useTheme();
   const navigation = useNavigation();
-<<<<<<< Updated upstream
-
-  const movetohospital = (title) => {
-    navigation.navigate("Choose Hospital", { title });
-  };
-
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={[styles.b1_item, { borderColor: colors.border }]} onPress={() => movetohospital(item.title)}>
-      <Text style={[styles.b1_itemText, { color: colors.text }]}>{item.title}</Text>
-      <Ionicons name="chevron-forward-outline" size={20} color={colors.icon} />
-=======
   const [selectedTitle, setSelectedTitle] = useState(null);
 
   const handleSelect = (title) => {
@@ -286,24 +271,17 @@ const BookingAmb1 = () => {
         size={20}
         color={selectedTitle === item.title ? colors.primary : colors.onSurfaceVariant || '#333'}
       />
->>>>>>> Stashed changes
     </TouchableOpacity>
   );
 
   return (
     <View style={[styles.b1_container, { backgroundColor: colors.background }]}>
-<<<<<<< Updated upstream
-      <View style={[styles.b1_card, { backgroundColor: colors.background }]}>
-=======
       <View style={[styles.b1_card, { backgroundColor: colors.surface }]}>
->>>>>>> Stashed changes
         <FlatList
           data={emergencyData}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
-<<<<<<< Updated upstream
-=======
         <TouchableOpacity
           onPress={handleNext}
           disabled={!selectedTitle}
@@ -318,7 +296,6 @@ const BookingAmb1 = () => {
             Next
           </Text>
         </TouchableOpacity>
->>>>>>> Stashed changes
       </View>
     </View>
   );
@@ -354,8 +331,6 @@ const styles = StyleSheet.create({
   },
   b1_itemText: {
     fontSize: 16,
-<<<<<<< Updated upstream
-=======
   },
   b1_nextButton: {
     marginTop: 20,
@@ -366,6 +341,5 @@ const styles = StyleSheet.create({
   b1_nextButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
->>>>>>> Stashed changes
   },
 });
