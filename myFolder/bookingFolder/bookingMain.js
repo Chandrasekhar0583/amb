@@ -11,6 +11,7 @@ const BookingAMBMAIN = () => {
   const Stack = createStackNavigator();
   const { colors } = useTheme();
 
+<<<<<<< Updated upstream
   return (
     <Stack.Navigator
       screenOptions={{
@@ -34,3 +35,28 @@ const BookingAMBMAIN = () => {
 };
 
 export default BookingAMBMAIN;
+=======
+    return (
+        // <SafeAreaView style={{ flex: 1 }}>
+            <Stack.Navigator 
+                screenOptions={{
+                    headerShown: true,
+                    headerStyle: {
+                        backgroundColor: '#f4511e',
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                    },
+                }}>
+                <Stack.Screen name="What's the emergency?" component={BookingAmb1} />
+                <Stack.Screen name="Choose Hospital" component={BookingAmb2} />
+                <Stack.Screen name="Direction" component={BookingAmb3} />
+                <Stack.Screen name="HospitalDetails" component={BookingAmb4} />
+                
+            </Stack.Navigator>
+        // </SafeAreaView>
+    );
+}
+export default BookingAMBMAIN;
+>>>>>>> Stashed changes
