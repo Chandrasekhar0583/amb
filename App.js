@@ -4,13 +4,14 @@ import { StyleSheet, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import MyThemeAMB from './myFolder/mytheme';
 import MyMainNavigate from './myFolder/mainnavigate';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
     <PaperProvider theme={MyThemeAMB}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <MyMainNavigate />
-      </View>
+      </SafeAreaView>
     </PaperProvider>
   );
 }
@@ -18,5 +19,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+   
   },
 });
