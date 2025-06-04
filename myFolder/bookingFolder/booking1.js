@@ -247,7 +247,7 @@ const BookingAmb1 = () => {
         styles.b1_item,
         { borderColor: colors.border },
         selectedTitle === item.title && {
-          backgroundColor: colors.primaryContainer || '#e6f0ff', // fallback color
+          backgroundColor: colors.primaryContainer , // fallback color
           paddingHorizontal: 10,
           borderRadius: 8,
         }
@@ -269,7 +269,7 @@ const BookingAmb1 = () => {
       <Ionicons
         name="chevron-forward-outline"
         size={20}
-        color={selectedTitle === item.title ? colors.primary : colors.onSurfaceVariant || '#333'}
+        color={selectedTitle === item.title ? colors.primary : colors.background }
       />
     </TouchableOpacity>
   );

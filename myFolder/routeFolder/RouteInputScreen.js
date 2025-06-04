@@ -10,6 +10,8 @@ const RouteInputScreen = () => {
 
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
+  const [startGeo, setStartGeo] = useState({});
+  const [endGeo, setEndGeo] = useState({});
   const [drivingNumber, setDrivingNumber] = useState('');
   const [gettingLocation, setGettingLocation] = useState(false);
 
@@ -35,6 +37,10 @@ const RouteInputScreen = () => {
       const place = places[0];
       const address = `${place.name || ''}, ${place.street || ''}, ${place.city || ''}`.trim();
       setStart(address);
+      setStartGeo({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
     } catch (error) {
       Alert.alert('Error', 'Failed to get location.');
       console.error(error);
@@ -43,44 +49,35 @@ const RouteInputScreen = () => {
     }
   };
 
-  const handleStart = async () => {
+  const handleStart = () => {
     if (!start || !end || !drivingNumber) {
       Alert.alert('Missing Fields', 'Please fill all the fields.');
       return;
     }
 
-    try {
-      const [startGeo] = await Location.geocodeAsync(start);
-      const [endGeo] = await Location.geocodeAsync(end);
-
-      if (!startGeo || !endGeo) {
-        Alert.alert('Error', 'Could not resolve one or both addresses.');
-        return;
-      }
-
-      navigation.navigate('Map', {
-        startCoords: {
-          latitude: startGeo.latitude,
-          longitude: startGeo.longitude,
-        },
-        endCoords: {
-          latitude: endGeo.latitude,
-          longitude: endGeo.longitude,
-        },
-        drivingNumber,
-      });
-    } catch (error) {
-      Alert.alert('Error', 'Failed to geocode addresses.');
-      console.error(error);
+    if (!startGeo.latitude || !endGeo.latitude) {
+      Alert.alert('Error', 'Coordinates are missing. Please pick valid locations.');
+      return;
     }
+
+    navigation.navigate('Map', {
+      startCoords: startGeo,
+      endCoords: endGeo,
+      drivingNumber,
+    });
   };
 
   const openMapPicker = (field) => {
     navigation.navigate('MapPicker', {
       field,
       onSelectLocation: (location) => {
-        if (field === 'start') setStart(location);
-        else if (field === 'end') setEnd(location);
+        if (field === 'start') {
+          setStart(location.label);
+          setStartGeo(location.coords);
+        } else if (field === 'end') {
+          setEnd(location.label);
+          setEndGeo(location.coords);
+        }
       },
     });
   };
@@ -128,11 +125,10 @@ const RouteInputScreen = () => {
           size={24}
           onPress={() => openMapPicker('end')}
         />
-        {/* Spacer to align with above row */}
         <View style={{ width: 48 }} />
       </View>
 
-      {/* Driving Number - same inputRow to match width */}
+      {/* Driving Number */}
       <View style={styles.inputRow}>
         <TextInput
           label="Driving Number"
@@ -143,7 +139,6 @@ const RouteInputScreen = () => {
           theme={{ colors: { text: colors.text, primary: colors.primary } }}
           mode="outlined"
         />
-        {/* Spacer to align visually with other rows */}
         <View style={{ width: 48 }} />
         <View style={{ width: 48 }} />
       </View>

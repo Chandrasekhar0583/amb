@@ -17,7 +17,7 @@ const BookingAMBMAIN = () => {
                 screenOptions={{
                     headerShown: true,
                     headerStyle: {
-                        backgroundColor: '#f4511e',
+                        backgroundColor: colors.primary,
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {

@@ -16,8 +16,15 @@ export default function RouteNavigator() {
       }}
     >
       <Stack.Screen name="RouteInput" component={RouteInputScreen} options={{ title: 'Route' }} />
-       <Stack.Screen name="MapPicker" component={MapPickerScreen} />
-      <Stack.Screen name="Map" component={MapScreen} />
+      <Stack.Screen name="MapPicker" component={MapPickerScreen} />
+      <Stack.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          headerLeft: () => null,      
+          gestureEnabled: false,       
+        }}
+      />
       <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
   );
